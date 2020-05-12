@@ -30,6 +30,7 @@
 
     <div class="comment-wrapper">
     {% for comment in thread.comments %}
+        {% if (comment.user_id == c.userobj.id) or c.userobj.sysadmin%}
         {{ comment.id }}
         <div class="comment">
             {% if comment.state != 'deleted' %}
@@ -71,6 +72,7 @@
             {% if comment.comments | length != 0 %}
                 {{ comment_thread(comment) }}
             {% endif %}
+        {% endif %}
     {% endfor %}
     </div>
 
